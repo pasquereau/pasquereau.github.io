@@ -246,6 +246,8 @@ footer { font-family: var(--f-ui); font-size: 0.78rem; color: var(--muted); bord
 .role a:hover { text-decoration: underline; }
 .affil a { color: inherit; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-decoration-thickness: 1px; }
 .affil a:hover { color: var(--accent); text-decoration-color: currentColor; }
+.refs a.t { color: inherit; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-decoration-thickness: 1px; }
+.refs a.t:hover { color: var(--accent); text-decoration-color: currentColor; }
 </style>
 </head>
 <body>
@@ -451,10 +453,8 @@ footer { font-family: var(--f-ui); font-size: 0.78rem; color: var(--muted); bord
     <section id="contact">
       <h2>Contact</h2>
       <p>Laboratoire de Linguistique de Nantes (LLING), Nantes Université, France.</p>
-      <div class="contact">
-        <span class="addr" id="email">jeremy.pasquereau@univ-nantes.fr</span>
-        <button class="copy" id="copy" type="button">Copy address</button>
-      </div>
+      <p><a href="mailto:jeremy.pasquereau@univ-nantes.fr">jeremy.pasquereau@univ-nantes.fr</a><br>
+      ORCID: <a href="https://orcid.org/0000-0003-1259-3109">0000-0003-1259-3109</a></p>
     </section>
 
     <footer>Last updated October 2026</footer>
@@ -463,23 +463,6 @@ footer { font-family: var(--f-ui); font-size: 0.78rem; color: var(--muted); bord
 
 <script>
 (function () {
-  var btn = document.getElementById('copy');
-  var addr = document.getElementById('email');
-  btn.addEventListener('click', function () {
-    var text = addr.textContent.trim();
-    function selectIt() {
-      var r = document.createRange(); r.selectNodeContents(addr);
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      btn.textContent = 'Selected, press Ctrl+C';
-    }
-    try {
-      navigator.clipboard.writeText(text).then(function () {
-        btn.textContent = 'Copied';
-        setTimeout(function () { btn.textContent = 'Copy address'; }, 2000);
-      }, selectIt);
-    } catch (e) { selectIt(); }
-  });
-
   var links = Array.prototype.slice.call(document.querySelectorAll('nav a'));
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
