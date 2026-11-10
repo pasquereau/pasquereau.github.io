@@ -20,7 +20,6 @@
     "https://orcid.org/0000-0003-1259-3109"
   ],
   "jobTitle": "CNRS research scientist",
-  "email": "mailto:jeremy.pasquereau@univ-nantes.fr",
   "worksFor": {
     "@type": "Organization",
     "name": "Laboratoire de Linguistique de Nantes (LLING), CNRS & Nantes Université",
@@ -453,7 +452,7 @@ main section:not(#about) a:not(.btn):hover { color: var(--accent); text-decorati
     <section id="contact">
       <h2>Contact</h2>
       <p>Laboratoire de Linguistique de Nantes (LLING), Nantes Université, France.</p>
-      <p><a href="mailto:jeremy.pasquereau@univ-nantes.fr">jeremy.pasquereau@univ-nantes.fr</a><br>
+      <p><a id="em" data-u="uaereuqsap.ymerej" data-d="rf.setnan-vinu">Email address shown with JavaScript enabled</a><br>
       ORCID: <a href="https://orcid.org/0000-0003-1259-3109">0000-0003-1259-3109</a></p>
     </section>
 
@@ -463,6 +462,13 @@ main section:not(#about) a:not(.btn):hover { color: var(--accent); text-decorati
 
 <script>
 (function () {
+  var em = document.getElementById('em');
+  if (em) {
+    var rev = function (x) { return x.split('').reverse().join(''); };
+    var addr = rev(em.getAttribute('data-u')) + String.fromCharCode(64) + rev(em.getAttribute('data-d'));
+    em.textContent = addr; em.href = 'mai' + 'lto:' + addr;
+  }
+
   var links = Array.prototype.slice.call(document.querySelectorAll('nav a'));
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
